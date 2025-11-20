@@ -1,10 +1,10 @@
 const socialMedia = `
-GitHub https://github.com/alexrintt/obsidian
-Fork this blog https://alexrintt.github.io/obsidian/how-to-use-obsidian's-blog-template-(built-with-gatsby-and-github-actions-but-no-coding-skills-are-required)/
+GitHub https://github.com/alexcmgit/obsidian
+Fork this blog https://alexcmgit.github.io/obsidian/how-to-use-obsidian's-blog-template-(built-with-gatsby-and-github-actions-but-no-coding-skills-are-required)/
 `;
 
 export default {
-  owner: "alexrintt",
+  owner: "alexcmgit",
   repo: "obsidian",
   pathPrefix: "/obsidian",
   // This will prevent someone else creating a discussion and publishing to your blog without your authorization.
