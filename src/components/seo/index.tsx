@@ -21,6 +21,7 @@ export default function Seo({
     image: defaultImage,
     siteUrl,
     twitterUsername,
+    deploySha,
   } = useSiteMetadata();
 
   const seo = {
@@ -57,6 +58,8 @@ export default function Seo({
       {twitterUsername !== "<your-tt-username>" && (
         <meta name="twitter:creator" content={seo.twitterUsername} />
       )}
+
+      <meta property="site:sha" content={deploySha} />
 
       {children}
     </>
