@@ -5,13 +5,13 @@ import {
   withBorderBottom,
   withBorderLeft,
   withBorderRight,
+  withBorderTop,
 } from "../../style/common";
 
 export const HeaderWrapper = styled.div<ISHeaderProps>`
   display: flex;
   justify-content: center;
   z-index: 10;
-  ${withBorderBottom}
 `;
 
 export const HeaderContainer = styled.div<ISHeaderProps>`
@@ -20,14 +20,9 @@ export const HeaderContainer = styled.div<ISHeaderProps>`
 
   padding: 1.5rem;
 
-  ${withBorderLeft}
-  ${withBorderRight}
-
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-
-  background: var(--surface-color);
 `;
 
 export type ISHeaderProps = {};

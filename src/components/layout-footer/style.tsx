@@ -10,8 +10,6 @@ import {
 export const FooterWrapper = styled.div<ISFooterProps>`
   display: flex;
   justify-content: center;
-
-  ${withBorderBottom}
 `;
 
 export const FooterContainer = styled.div<ISFooterProps>`
@@ -22,10 +20,6 @@ export const FooterContainer = styled.div<ISFooterProps>`
   display: flex;
   font-size: 2rem;
   text-align: center;
-  background: var(--surface-color);
-
-  ${withBorderLeft}
-  ${withBorderRight}
 `;
 
 export type ISFooterProps = {};

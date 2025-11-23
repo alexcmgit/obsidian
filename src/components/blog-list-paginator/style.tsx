@@ -6,15 +6,11 @@ import { InLink } from "../inlink";
 export const BlogListPaginatorWrapper = styled.div<ISBlogListPaginatorProps>`
   display: flex;
   justify-content: center;
-
-  ${withBorderBottom}
 `;
 
 export const BlogListPaginatorContainer = styled.div<ISBlogListPaginatorProps>`
   width: 100%;
   max-width: var(--container-width);
-  background: ;
-  background: var(--surface-color);
   padding: 1.5rem;
   display: flex;
   font-size: 5rem;

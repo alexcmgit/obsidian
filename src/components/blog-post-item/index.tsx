@@ -4,10 +4,9 @@ import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 
 import * as S from "./style";
 
-type IBlogPostItem = {
+export type IBlogPostItem = {
   post: {
     title: string;
-    excerpt: string;
     shortExcerpt: {
       excerpt: string;
     };
@@ -24,7 +23,7 @@ export function BlogPostItem({ post }: IBlogPostItem) {
   return (
     <S.BlogPostItem>
       <S.BlogPostItemLink to={post.path}>
-        {post.thumbnailImage && (
+        {post.thumbnailImage ? (
           <S.BlogPostItemThumb>
             <GatsbyImage
               image={
@@ -35,13 +34,21 @@ export function BlogPostItem({ post }: IBlogPostItem) {
               alt={post.title}
             />
           </S.BlogPostItemThumb>
+        ) : (
+          <S.BlogPostItemFallbackThumb>
+            {post.title[0].toUpperCase()}
+          </S.BlogPostItemFallbackThumb>
         )}
         <S.BlogPostItemContent>
-          <p>{post.humanReadableCreatedAt}</p>
+          <p className="date">{post.humanReadableCreatedAt}</p>
           <h1>{post.title}</h1>
-          <p>{post.shortExcerpt.excerpt}</p>
+          {/* <p className="excerpt">{post.shortExcerpt.excerpt}</p> */}
         </S.BlogPostItemContent>
       </S.BlogPostItemLink>
     </S.BlogPostItem>
   );
+}
+
+function getLastCharsOf(s: string, n: number):string {
+  return s.slice(-n);
 }

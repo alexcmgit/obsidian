@@ -11,16 +11,12 @@ import { InLink } from "../inlink";
 export const NavWrapper = styled.div`
   display: flex;
   justify-content: center;
-
-  ${withBorderBottom}
 `;
 
 export const NavContainer = styled.div`
   width: 100%;
   max-width: var(--container-width);
   padding: 1.5rem;
-  ${withBorderLeft}
-  ${withBorderRight}
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

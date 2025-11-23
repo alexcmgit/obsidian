@@ -5,7 +5,7 @@ import * as S from "./blog-list.style.tsx";
 import { GitHubUser, Layout } from "../components/layout";
 import { BlogListPaginator } from "../components/blog-list-paginator/index.tsx";
 import Seo from "../components/seo/index.tsx";
-import { BlogPostItem } from "../components/blog-post-item/index.tsx";
+import { BlogPostItem, IBlogPostItem } from "../components/blog-post-item/index.tsx";
 
 export type BlogListPageContext = {
   currentPage: number;
@@ -29,11 +29,39 @@ export default function BlogListPage(
     return <></>;
   }
 
+  type DiscussionPostItemType = typeof discussions[number];
+
+  const discussionsGroupedByYear: { [year: string]: typeof discussions } = (() => {
+    const groups: { [year: string]: any[] } = {};
+    for (const discussion of discussions) {
+      const year = new Date(discussion.createdAt!).getFullYear().toString();
+      console.log({ year })
+      if (!groups[year]) {
+        groups[year] = [];
+      }
+      groups[year].push(discussion);
+    }
+    return groups
+  })();
+
+  console.log({a: Object.keys(discussionsGroupedByYear)})
+
+  const years = Object.keys(discussionsGroupedByYear).map(Number).sort((a, z) => z - a).map((e) => e.toString());
+
+  console.log({years})
+
   return (
     <Layout owner={owner as GitHubUser}>
       <S.Main>
-        {discussions.map((e: any) => {
-          return <BlogPostItem key={e.githubId} post={e} />;
+        {years.map((year) => {
+          return (
+            <>
+              <S.YearDivider>{year}</S.YearDivider>
+              {discussionsGroupedByYear[year].map((e: DiscussionPostItemType) => {
+                return <BlogPostItem key={e.githubId} post={e as IBlogPostItem["post"]} />;
+              })}
+            </>
+          )
         })}
         <BlogListPaginator
           currentPage={currentPage}
@@ -54,11 +82,21 @@ export default function BlogListPage(
 export const Head: HeadFC = () => <Seo />;
 
 export const query = graphql`
-  fragment PostCoverImageData on File {
+  fragment PostDetailsThumbImageData on File {
     childImageSharp {
       gatsbyImageData(
         layout: CONSTRAINED
         width: 1920
+        placeholder: BLURRED
+        formats: [AUTO, WEBP, AVIF]
+      )
+    }
+  }
+  fragment PostListThumbImageData on File {
+    childImageSharp {
+      gatsbyImageData(
+        layout: CONSTRAINED
+        width: 100
         placeholder: BLURRED
         formats: [AUTO, WEBP, AVIF]
       )
@@ -98,8 +136,9 @@ export const query = graphql`
           excerpt(format: PLAIN, pruneLength: 240)
         }
         humanReadableCreatedAt: createdAt(formatString: "dddd, MMMM Do YYYY")
+        createdAt
         thumbnailImage {
-          ...PostCoverImageData
+          ...PostListThumbImageData
           publicURL
         }
       }

@@ -17,9 +17,6 @@ export const MainWrapper = styled.main`
 export const MainContainer = styled.div`
   width: 100%;
   max-width: var(--container-width);
-  ${withBorderRight}
-  ${withBorderLeft}
-  background: var(--surface-color);
   position: relative;
 `;
 
@@ -30,3 +27,12 @@ export function Main({ children }: React.PropsWithChildren) {
     </MainWrapper>
   );
 }
+
+export const YearDivider = styled.h2`
+  margin-left: 1rem;
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
+  font-size: 1rem;
+  text-align: left;
+`;

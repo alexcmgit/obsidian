@@ -122,7 +122,7 @@ export const query = graphql`
           login
         }
         thumbnailImage {
-          ...PostCoverImageData
+          ...PostDetailsThumbImageData
           publicURL
         }
         ...PostPreviewInfo
@@ -138,7 +138,7 @@ export const query = graphql`
         login
       }
       thumbnailImage {
-        ...PostCoverImageData
+        ...PostDetailsThumbImageData
         publicURL
       }
       ...PostPreviewInfo

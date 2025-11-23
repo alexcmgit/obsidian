@@ -10,14 +10,11 @@ export const ContentWrapper = styled.main`
   width: 100%;
   display: flex;
   justify-content: center;
-  ${withBorderBottom}
 `;
 
 export const ContentContainer = styled.div`
   width: 100%;
   max-width: var(--container-width);
-  ${withBorderRight}
-  ${withBorderLeft}
   padding: 1.5rem;
 `;
 
@@ -39,7 +36,6 @@ export const ContentMetaWrapper = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
-  ${withBorderBottom}
 `;
 
 export type IOptionalPadding = {
@@ -51,11 +47,7 @@ export const ContentMetaContainer = styled.div<
 >`
   width: 100%;
   max-width: var(--container-width);
-  ${withBorderRight}
-  ${withBorderLeft}
   padding: ${(props) => (props.noPadding ? "0" : "1.5rem")};
-
-  background: var(--surface-color);
 `;
 
 export function ContentMeta({
@@ -81,14 +73,11 @@ export const ContentDividerWrapper = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
-  ${withBorderBottom}
 `;
 
 export const ContentDividerContainer = styled.div`
   width: 100%;
   max-width: var(--container-width);
-  ${withBorderRight}
-  ${withBorderLeft}
   padding: 1.5rem;
 `;
 
@@ -110,14 +99,11 @@ export const ContentHeroWrapper = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
-  ${withBorderBottom}
 `;
 
 export const ContentHeroContainer = styled.div`
   width: 100%;
   max-width: var(--container-width);
-  ${withBorderRight}
-  ${withBorderLeft}
 
   position: relative;
 
@@ -149,7 +135,7 @@ export const ContentHeroBackdrop = styled.section`
   right: 0;
 
   // TODO: Dark mode opacity should be 10%
-  filter: blur(75px) opacity(100%);
+  filter: blur(75px) opacity(25%);
 
   z-index: 5;
 `;
@@ -178,7 +164,6 @@ export const MarkdownStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     margin: 0;
     color: var(--text-color);
-    background-color: var(--surface-color);
     font-size: 16px;
     line-height: 1.5;
     word-wrap: break-word;
